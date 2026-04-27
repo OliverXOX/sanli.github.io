@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>新手理财日报 - 2026-04-27</title>
+  <style>
+    :root {
+      --bg: #07111f;
+      --panel: rgba(10, 23, 43, 0.82);
+      --panel-strong: rgba(12, 27, 52, 0.96);
+      --border: rgba(148, 163, 184, 0.18);
+      --text: #e5eefb;
+      --muted: #9fb1c9;
+      --good: #2dd4bf;
+      --warn: #f59e0b;
+      --danger: #fb7185;
+      --neutral: #60a5fa;
+      --shadow: 0 24px 70px rgba(4, 10, 24, 0.45);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", "Microsoft YaHei", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(45, 212, 191, 0.20), transparent 22%),
+        radial-gradient(circle at top right, rgba(96, 165, 250, 0.18), transparent 28%),
+        linear-gradient(180deg, #091221 0%, #050b16 100%);
+      min-height: 100vh;
+    }
+    .shell { width: min(1200px, calc(100% - 32px)); margin: 32px auto 56px; }
+    .hero {
+      background: linear-gradient(135deg, rgba(17, 34, 64, 0.96), rgba(8, 18, 35, 0.96));
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto -40px -80px auto;
+      width: 240px;
+      height: 240px;
+      background: radial-gradient(circle, rgba(96, 165, 250, 0.28), transparent 65%);
+      pointer-events: none;
+    }
+    .eyebrow { color: #7dd3fc; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; margin: 0 0 10px; }
+    h1 { margin: 0 0 12px; font-size: clamp(30px, 4vw, 48px); line-height: 1.1; }
+    h2 { margin: 0 0 18px; font-size: 24px; }
+    h3, h4, p { margin-top: 0; }
+    .hero p.lead { max-width: 760px; color: var(--muted); font-size: 17px; line-height: 1.7; margin-bottom: 0; }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+    .hero-grid, .grid-2, .grid-3, .mini-grid { display: grid; gap: 18px; }
+
+    .hero-grid { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); margin-top: 26px; }
+    .grid-2 { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
+    .grid-3 { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+    .mini-grid { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
+    .section { margin-top: 22px; background: var(--panel); border: 1px solid var(--border); border-radius: 24px; padding: 22px; box-shadow: var(--shadow); }
+    .tab-note { color: var(--muted); font-size: 14px; margin-bottom: 16px; padding: 12px; background: rgba(251, 113, 133, 0.1); border-radius: 10px; border-left: 3px solid var(--danger); }
+    .summary-card, .pick-card, .rule-card, .mini-card, .news-item, .empty-card {
+      background: var(--panel-strong);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+    }
+    .summary-card { display: flex; gap: 14px; padding: 18px; min-height: 146px; }
+    .summary-card h3 { margin-bottom: 8px; font-size: 22px; }
+    .summary-card p { color: var(--muted); line-height: 1.6; margin-bottom: 0; }
+    .icon-box {
+      width: 52px;
+      height: 52px;
+      border-radius: 16px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      flex-shrink: 0;
+      background: linear-gradient(135deg, rgba(45, 212, 191, 0.95), rgba(59, 130, 246, 0.95));
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.2), 0 14px 30px rgba(6, 20, 43, 0.45);
+    }
+    .icon-box.small { width: 42px; height: 42px; border-radius: 14px; }
+    .icon-box svg { width: 24px; height: 24px; }
+    .tone-good .icon-box { background: linear-gradient(135deg, #22c55e, #14b8a6); }
+    .tone-warn .icon-box { background: linear-gradient(135deg, #f97316, #f43f5e); }
+    .tone-neutral .icon-box { background: linear-gradient(135deg, #3b82f6, #6366f1); }
+    .pick-card { padding: 18px; display: flex; flex-direction: column; gap: 16px; }
+    .pick-head, .mini-top { display: flex; justify-content: space-between; gap: 12px; align-items: flex-start; }
+    .pick-head h3, .rule-card h3 { margin-bottom: 6px; font-size: 20px; }
+    .muted { color: var(--muted); line-height: 1.6; }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border-radius: 999px;
+      padding: 7px 12px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      border: 1px solid rgba(255,255,255,0.12);
+      white-space: nowrap;
+    }
+    .pill.good { background: rgba(34,197,94,0.14); color: #86efac; }
+    .pill.neutral { background: rgba(59,130,246,0.16); color: #93c5fd; }
+    .pill.danger { background: rgba(244,63,94,0.14); color: #fda4af; }
+    .pick-stats, .mini-stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .pick-stats div, .mini-stats { background: rgba(255,255,255,0.02); border-radius: 16px; padding: 12px; border: 1px solid rgba(255,255,255,0.05); }
+    .pick-stats span, .mini-top p, .mini-stats span { display: block; color: var(--muted); font-size: 13px; }
+    .pick-stats strong, .mini-stats strong { display: block; margin-top: 6px; font-size: 20px; }
+    .pick-reason-block { display: grid; gap: 10px; }
+    .pick-reason-block p, .rule-card p { line-height: 1.7; margin-bottom: 0; }
+    .rule-card { display: flex; gap: 14px; padding: 16px; }
+    .mini-card { padding: 14px; }
+    .mini-top h4 { margin-bottom: 4px; }
+    .news-group + .news-group { margin-top: 18px; }
+    .news-list { display: grid; gap: 12px; }
+    .news-item { padding: 14px; display: grid; gap: 10px; }
+    .empty-card { padding: 20px; color: var(--muted); line-height: 1.7; }
+    .footer-note { color: var(--muted); font-size: 14px; line-height: 1.8; }
+    .floating-tools {
+      position: fixed;
+      right: 24px;
+      bottom: 24px;
+      z-index: 100;
+      width: min(360px, calc(100vw - 32px));
+      display: grid;
+      gap: 10px;
+    }
+    .tool-button {
+      appearance: none;
+      border: 1px solid rgba(125, 211, 252, 0.28);
+      background: linear-gradient(135deg, rgba(14, 165, 233, 0.22), rgba(59, 130, 246, 0.20));
+      color: var(--text);
+      border-radius: 20px;
+      min-height: 64px;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(16px);
+      transition: transform 0.18s ease, border-color 0.18s ease, opacity 0.18s ease;
+      font: inherit;
+      font-weight: 700;
+    }
+    .tool-button:hover { transform: translateY(-2px); border-color: rgba(125, 211, 252, 0.44); }
+    .tool-button:disabled { opacity: 0.72; cursor: wait; transform: none; }
+    .tool-button.primary { border-color: rgba(45, 212, 191, 0.34); background: linear-gradient(135deg, rgba(16, 185, 129, 0.24), rgba(14, 165, 233, 0.22)); }
+    .tool-button.secondary .icon-box { background: linear-gradient(135deg, #6366f1, #3b82f6); }
+    .tool-copy { display: flex; flex-direction: column; gap: 4px; text-align: left; }
+
+    .tool-copy strong { font-size: 16px; }
+    .tool-copy span { color: var(--muted); font-size: 13px; font-weight: 500; }
+    .tool-status {
+      margin: 0;
+      padding: 12px 14px;
+      border-radius: 16px;
+      border: 1px solid rgba(148, 163, 184, 0.16);
+      background: rgba(8, 18, 35, 0.88);
+      color: var(--muted);
+      box-shadow: var(--shadow);
+      line-height: 1.6;
+      font-size: 13px;
+    }
+    .tool-status[data-error="true"] { border-color: rgba(251, 113, 133, 0.35); color: #fecdd3; }
+    body.is-exporting .floating-tools { opacity: 0; pointer-events: none; }
+    @media (max-width: 700px) {
+      .shell { width: min(100% - 20px, 1200px); margin-top: 18px; }
+      .hero, .section { padding: 18px; border-radius: 20px; }
+      .summary-card { min-height: auto; }
+      .floating-tools { right: 10px; left: 10px; bottom: 10px; width: auto; }
+      .tool-button { min-height: 58px; }
+    }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+</head>
+<body>
+  <aside class="floating-tools" data-no-export>
+    <button id="refreshDigestBtn" class="tool-button primary" type="button" aria-label="手动刷新日报">
+      <span class="icon-box small"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><path d="M21 3v6h-6"/></svg></span>
+      <span class="tool-copy">
+        <strong>手动刷新</strong>
+        <span>重新抓取最新行情和新闻，适合早上或下午再看一遍</span>
+      </span>
+    </button>
+    <button id="exportLongImageBtn" class="tool-button secondary" type="button" aria-label="导出长图">
+      <span class="icon-box small"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/><path d="M5 5h14"/></svg></span>
+      <span class="tool-copy">
+        <strong>导出长图</strong>
+        <span>一键保存整页，适合发微信或做留档</span>
+      </span>
+    </button>
+    <p id="toolStatus" class="tool-status" data-error="false">支持早上和下午手动刷新；刷新成功后会自动重载页面。</p>
+  </aside>
+
+  <main class="shell" data-export-root>
+    <section class="hero">
+      <p class="eyebrow">新手理财日报 · 2026-04-27</p>
+      <h1>今天直接怎么做，我替你先说人话</h1>
+      <p class="lead">今天市场偏暖，可以开始或继续买底仓，但依旧只做分批。 这份页面默认站在"刚开始学投资"的角度，只强调三件事：先买什么、先别买什么、什么时候动手。</p>
+      <div class="hero-meta">
+        <span class="pill neutral">市场状态：偏暖震荡</span>
+        <span class="pill good">上次刷新：2026-04-27 10:51:59</span>
+      </div>
+      <div class="hero-grid">
+    <article class="summary-card tone-good">
+      <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"/><path d="m5 12 7-7 7 7"/><path d="M5 19h14"/></svg></div>
+      <div class="summary-body">
+        <p class="eyebrow">今天可以买</p>
+        <h3>现金管理 + 宽基ETF</h3>
+        <p>先从华宝添益、沪深300ETF、红利低波ETF开始。</p>
+      </div>
+    </article>
+    
+    <article class="summary-card tone-warn">
+      <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8 8 8 8"/></svg></div>
+      <div class="summary-body">
+        <p class="eyebrow">今天别追</p>
+        <h3>油气ETF + 高波主题基金</h3>
+        <p>热门主题基金涨得快、回撤也快，新手先守住底仓。</p>
+      </div>
+    </article>
+    
+    <article class="summary-card tone-neutral">
+      <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/><path d="M5 5h14"/></svg></div>
+      <div class="summary-body">
+        <p class="eyebrow">卖出原则</p>
+        <h3>底仓不动，热点减仓</h3>
+        <p>如果你已经重仓高波动主题，等反弹先减一点。</p>
+      </div>
+    </article>
+    
+    <article class="summary-card tone-neutral">
+      <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
+      <div class="summary-body">
+        <p class="eyebrow">今天更适合的动作时间</p>
+        <h3>10:00 后或 14:30 左右</h3>
+        <p>避开开盘乱跳时段，按计划分批。</p>
+      </div>
+    </article>
+    </div>
+    </section>
+
+
+    <section class="section">
+      <p class="eyebrow">Step 1</p>
+      <h2>今天可以买</h2>
+      <div class="grid-3">
+    <article class="pick-card">
+      <div class="pick-head">
+        <div>
+          <h3>华宝添益</h3>
+          <p class="muted">511990 · 闲钱管理，替代活期</p>
+        </div>
+        <span class="pill good">先买</span>
+      </div>
+      <div class="pick-stats">
+        <div><span>现价</span><strong>99.995</strong></div>
+        <div><span>涨跌</span><strong>-0.00%</strong></div>
+      </div>
+      <div class="pick-reason-block">
+        <p><strong>什么时候：</strong>如果你应急金还没备够，今天就先买；它可以当现金管理仓。</p>
+        <p><strong>为什么：</strong>波动几乎可以忽略，适合新手先把备用钱放稳。</p>
+      </div>
+    </article>
+    
+    <article class="pick-card">
+      <div class="pick-head">
+        <div>
+          <h3>沪深300ETF</h3>
+          <p class="muted">510300 · A股核心底仓</p>
+        </div>
+        <span class="pill good">分批买</span>
+      </div>
+      <div class="pick-stats">
+        <div><span>现价</span><strong>4.789</strong></div>
+        <div><span>涨跌</span><strong>+0.15%</strong></div>
+      </div>
+      <div class="pick-reason-block">
+        <p><strong>什么时候：</strong>今天可先买计划仓位的 1/3；如果当天涨幅超过 2%，改成下一个回落日再买。</p>
+        <p><strong>为什么：</strong>它是一篮子 A 股核心公司，适合用基金方式分散持有，更适合新手起步。</p>
+      </div>
+    </article>
+    
+    <article class="pick-card">
+      <div class="pick-head">
+        <div>
+          <h3>红利低波ETF</h3>
+          <p class="muted">512890 · 防御型权益底仓</p>
+        </div>
+        <span class="pill good">定投买</span>
+      </div>
+      <div class="pick-stats">
+        <div><span>现价</span><strong>1.191</strong></div>
+        <div><span>涨跌</span><strong>-0.58%</strong></div>
+      </div>
+      <div class="pick-reason-block">
+        <p><strong>什么时候：</strong>和沪深300ETF二选一或搭配；更适合每周固定一天定投。</p>
+        <p><strong>为什么：</strong>高股息和低波动结合，通常更适合怕大起大落的新手。</p>
+      </div>
+    </article>
+    </div>
+    </section>
+
+    <section class="section">
+      <p class="eyebrow">Step 2</p>
+      <h2>今天只适合小仓买</h2>
+      <div class="grid-3">
+    <article class="pick-card">
+      <div class="pick-head">
+        <div>
+          <h3>黄金ETF</h3>
+          <p class="muted">518880 · 避险与通胀对冲</p>
+        </div>
+        <span class="pill neutral">小仓买</span>
+      </div>
+      <div class="pick-stats">
+        <div><span>现价</span><strong>9.912</strong></div>
+        <div><span>涨跌</span><strong>+0.88%</strong></div>
+      </div>
+      <div class="pick-reason-block">
+        <p><strong>什么时候：</strong>只用小仓位，控制在总资产的 5% 到 10%；今天可以先建一小笔。</p>
+        <p><strong>为什么：</strong>最近避险情绪不低，黄金适合当对冲仓，不适合当主仓。</p>
+      </div>
+    </article>
+    
+    <article class="pick-card">
+      <div class="pick-head">
+        <div>
+          <h3>恒生科技ETF</h3>
+          <p class="muted">513180 · 港股科技，波动较大</p>
+        </div>
+        <span class="pill neutral">观察买</span>
+      </div>
+      <div class="pick-stats">
+        <div><span>现价</span><strong>0.634</strong></div>
+        <div><span>涨跌</span><strong>+0.96%</strong></div>
+      </div>
+      <div class="pick-reason-block">
+        <p><strong>什么时候：</strong>如果你想配成长方向，只买很小一笔，最好固定周投，不要一次性重仓。</p>
+        <p><strong>为什么：</strong>港股科技弹性大，但波动也大，适合观察仓，不适合做主仓。</p>
+      </div>
+    </article>
+    </div>
+    </section>
+
+    <section class="section">
+      <p class="eyebrow">Step 3</p>
+      <h2>今天先别买</h2>
+      <div class="grid-3">
+    <article class="pick-card">
+      <div class="pick-head">
+        <div>
+          <h3>油气ETF</h3>
+          <p class="muted">159309 · 资源主题，高波动，谨慎追涨</p>
+        </div>
+        <span class="pill danger">别追</span>
+      </div>
+      <div class="pick-stats">
+        <div><span>现价</span><strong>1.505</strong></div>
+        <div><span>涨跌</span><strong>+0.13%</strong></div>
+      </div>
+      <div class="pick-reason-block">
+        <p><strong>什么时候：</strong>今天先别追；等热度退一些、波动收敛后再考虑。</p>
+        <p><strong>为什么：</strong>近期热点很足，但越热门越容易大起大落，新手最容易追在高位。</p>
+      </div>
+    </article>
+    
+    <article class="pick-card">
+      <div class="pick-head">
+        <div>
+          <h3>科创50ETF</h3>
+          <p class="muted">588000 · 科技成长，高波动</p>
+        </div>
+        <span class="pill danger">先观察</span>
+      </div>
+      <div class="pick-stats">
+        <div><span>现价</span><strong>1.581</strong></div>
+        <div><span>涨跌</span><strong>+3.27%</strong></div>
+      </div>
+      <div class="pick-reason-block">
+        <p><strong>什么时候：</strong>如果你刚开始做基金，今天先别把它当主仓；最多只放观察仓。</p>
+        <p><strong>为什么：</strong>科技成长波动更大，适合在底仓稳定后再慢慢加，不适合直接重仓。</p>
+      </div>
+    </article>
+    
+    <article class="pick-card">
+      <div class="pick-head">
+        <div>
+          <h3>创业板ETF</h3>
+          <p class="muted">159915 · 成长风格观察/定投</p>
+        </div>
+        <span class="pill danger">控仓</span>
+      </div>
+      <div class="pick-stats">
+        <div><span>现价</span><strong>3.666</strong></div>
+        <div><span>涨跌</span><strong>-0.22%</strong></div>
+      </div>
+      <div class="pick-reason-block">
+        <p><strong>什么时候：</strong>如果你今天已经买了宽基ETF，这类成长基金先别再加太多。</p>
+        <p><strong>为什么：</strong>同样是基金，但风格更激进，容易让仓位一下子变得太冲。</p>
+      </div>
+    </article>
+    </div>
+    </section>
+
+    <section class="section grid-2">
+      <div>
+        <p class="eyebrow">Sell</p>
+        <h2>今天卖什么</h2>
+        <div class="grid-3">
+    <article class="rule-card">
+      <div class="icon-box small"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/><path d="M5 5h14"/></svg></div>
+      <div>
+        <h3>底仓 ETF</h3>
+        <p><strong>怎么做：</strong>今天先不卖。</p>
+        <p class="muted"><strong>原因：</strong>对新手来说，底仓的意义是让你建立长期习惯，不是来回做短线。</p>
+      </div>
+    </article>
+    
+    <article class="rule-card">
+      <div class="icon-box small"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/><path d="M5 5h14"/></svg></div>
+      <div>
+        <h3>高波主题 ETF</h3>
+        <p><strong>怎么做：</strong>如果你之前已经追高买过，且仓位超过总资产的 10%，等下一次反弹时先减 1/3。</p>
+        <p class="muted"><strong>原因：</strong>热点主题最容易让新手心态失衡，先把仓位降下来，比猜下一个涨跌更重要。</p>
+      </div>
+    </article>
+    
+    <article class="rule-card">
+      <div class="icon-box small"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/><path d="M5 5h14"/></svg></div>
+      <div>
+        <h3>成长风格基金</h3>
+        <p><strong>怎么做：</strong>如果你最近刚连续加过创业板ETF、科创50ETF或恒生科技ETF，今天先别继续追；等回落后再看。</p>
+        <p class="muted"><strong>原因：</strong>基金也分稳和冲，成长类基金连涨后再追，回撤时会更难拿住。</p>
+      </div>
+    </article>
+    </div>
+      </div>
+      <div>
+        <p class="eyebrow">Timing</p>
+        <h2>今天什么时候动手</h2>
+        <div class="grid-3">
+    <article class="rule-card">
+      <div class="icon-box small"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
+      <div>
+        <h3>买入时段</h3>
+        <p>尽量避开开盘前 30 分钟；更适合在 10:00 以后，或 14:30 左右再决定是否下单。</p>
+      </div>
+    </article>
+    
+    <article class="rule-card">
+      <div class="icon-box small"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
+      <div>
+        <h3>今天涨太多怎么办</h3>
+        <p>你想买的 ETF 如果当天已经涨超 2%，今天就别追，等下一个正常回落日。</p>
+      </div>
+    </article>
+    
+    <article class="rule-card">
+      <div class="icon-box small"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
+      <div>
+        <h3>今天跌一点怎么办</h3>
+        <p>如果核心宽基 ETF 回落 0.8% 到 2%，反而更适合按计划补一笔。</p>
+      </div>
+    </article>
+    
+    <article class="rule-card">
+      <div class="icon-box small"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
+      <div>
+        <h3>分几次买</h3>
+        <p>最简单的做法是分 3 次：今天 1/3、下一个回落日 1/3、下一周固定时间 1/3。</p>
+      </div>
+    </article>
+    </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <p class="eyebrow">Market</p>
+      <h2>指数快照</h2>
+      <div class="mini-grid">
+            <article class="mini-card">
+              <div class="mini-top">
+                <div class="icon-box small"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 21H3"/><path d="M7 16V8"/><path d="M12 16V4"/><path d="M17 16v-6"/></svg></div>
+                <div>
+                  <h4>上证指数</h4>
+                  <p>000001</p>
+                </div>
+              </div>
+              <div class="mini-stats">
+                <strong>4084.101</strong>
+                <span>+0.10%</span>
+              </div>
+            </article>
+            
+            <article class="mini-card">
+              <div class="mini-top">
+                <div class="icon-box small"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 21H3"/><path d="M7 16V8"/><path d="M12 16V4"/><path d="M17 16v-6"/></svg></div>
+                <div>
+                  <h4>深证成指</h4>
+                  <p>399001</p>
+                </div>
+              </div>
+              <div class="mini-stats">
+                <strong>15014.365</strong>
+                <span>+0.50%</span>
+              </div>
+            </article>
+            
+            <article class="mini-card">
+              <div class="mini-top">
+                <div class="icon-box small"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 21H3"/><path d="M7 16V8"/><path d="M12 16V4"/><path d="M17 16v-6"/></svg></div>
+                <div>
+                  <h4>创业板指</h4>
+                  <p>399006</p>
+                </div>
+              </div>
+              <div class="mini-stats">
+                <strong>3661.381</strong>
+                <span>-0.17%</span>
+              </div>
+            </article>
+            </div>
+    </section>
+
+    <section class="section">
+      <p class="eyebrow">Funds</p>
+      <h2>基金观察池</h2>
+      <div class="mini-grid">
+            <article class="mini-card">
+              <div class="mini-top">
+                <div class="icon-box small"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 21H3"/><path d="M7 16V8"/><path d="M12 16V4"/><path d="M17 16v-6"/></svg></div>
+                <div>
+                  <h4>华宝添益</h4>
+                  <p>511990</p>
+                </div>
+              </div>
+              <div class="mini-stats">
+                <strong>99.995</strong>
+                <span>-0.00%</span>
+              </div>
+            </article>
+            
+            <article class="mini-card">
+              <div class="mini-top">
+                <div class="icon-box small"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 21H3"/><path d="M7 16V8"/><path d="M12 16V4"/><path d="M17 16v-6"/></svg></div>
+                <div>
+                  <h4>国债ETF</h4>
+                  <p>511010</p>
+                </div>
+              </div>
+              <div class="mini-stats">
+                <strong>140.838</strong>
+                <span>-0.04%</span>
+              </div>
+            </article>
+            
+            <article class="mini-card">
+              <div class="mini-top">
+                <div class="icon-box small"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 21H3"/><path d="M7 16V8"/><path d="M12 16V4"/><path d="M17 16v-6"/></svg></div>
+                <div>
+                  <h4>沪深300ETF</h4>
+                  <p>510300</p>
+                </div>
+              </div>
+              <div class="mini-stats">
+                <strong>4.789</strong>
+                <span>+0.15%</span>
+              </div>
+            </article>
+            
+            <article class="mini-card">
+              <div class="mini-top">
+                <div class="icon-box small"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 21H3"/><path d="M7 16V8"/><path d="M12 16V4"/><path d="M17 16v-6"/></svg></div>
+                <div>
+                  <h4>红利低波ETF</h4>
+                  <p>512890</p>
+                </div>
+              </div>
+              <div class="mini-stats">
+                <strong>1.191</strong>
+                <span>-0.58%</span>
+              </div>
+            </article>
+            
+            <article class="mini-card">
+              <div class="mini-top">
+                <div class="icon-box small"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 21H3"/><path d="M7 16V8"/><path d="M12 16V4"/><path d="M17 16v-6"/></svg></div>
+                <div>
+                  <h4>创业板ETF</h4>
+                  <p>159915</p>
+                </div>
+              </div>
+              <div class="mini-stats">
+                <strong>3.666</strong>
+                <span>-0.22%</span>
+              </div>
+            </article>
+            
+            <article class="mini-card">
+              <div class="mini-top">
+                <div class="icon-box small"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 21H3"/><path d="M7 16V8"/><path d="M12 16V4"/><path d="M17 16v-6"/></svg></div>
+                <div>
+                  <h4>科创50ETF</h4>
+                  <p>588000</p>
+                </div>
+              </div>
+              <div class="mini-stats">
+                <strong>1.581</strong>
+                <span>+3.27%</span>
+              </div>
+            </article>
+            
+            <article class="mini-card">
+              <div class="mini-top">
+                <div class="icon-box small"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 21H3"/><path d="M7 16V8"/><path d="M12 16V4"/><path d="M17 16v-6"/></svg></div>
+                <div>
+                  <h4>恒生科技ETF</h4>
+                  <p>513180</p>
+                </div>
+              </div>
+              <div class="mini-stats">
+                <strong>0.634</strong>
+                <span>+0.96%</span>
+              </div>
+            </article>
+            
+            <article class="mini-card">
+              <div class="mini-top">
+                <div class="icon-box small"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 21H3"/><path d="M7 16V8"/><path d="M12 16V4"/><path d="M17 16v-6"/></svg></div>
+                <div>
+                  <h4>黄金ETF</h4>
+                  <p>518880</p>
+                </div>
+              </div>
+              <div class="mini-stats">
+                <strong>9.912</strong>
+                <span>+0.88%</span>
+              </div>
+            </article>
+            
+            <article class="mini-card">
+              <div class="mini-top">
+                <div class="icon-box small"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 21H3"/><path d="M7 16V8"/><path d="M12 16V4"/><path d="M17 16v-6"/></svg></div>
+                <div>
+                  <h4>油气ETF</h4>
+                  <p>159309</p>
+                </div>
+              </div>
+              <div class="mini-stats">
+                <strong>1.505</strong>
+                <span>+0.13%</span>
+              </div>
+            </article>
+            </div>
+    </section>
+
+    <section class="section">
+      <p class="eyebrow">Stocks</p>
+      <h2>股票观察池</h2>
+      <p class="tab-note">若非要买股票，只用极小仓位，且必须设止损。</p>
+      <div class="mini-grid">
+            <article class="mini-card">
+              <div class="mini-top">
+                <div class="icon-box small"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17 9 11l4 4 7-8"/><path d="M14 7h6v6"/></svg></div>
+                <div>
+                  <h4>中国神华</h4>
+                  <p>601088</p>
+                </div>
+              </div>
+              <div class="mini-stats">
+                <strong>46.570</strong>
+                <span>-1.31%</span>
+              </div>
+            </article>
+            
+            <article class="mini-card">
+              <div class="mini-top">
+                <div class="icon-box small"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17 9 11l4 4 7-8"/><path d="M14 7h6v6"/></svg></div>
+                <div>
+                  <h4>招商银行</h4>
+                  <p>600036</p>
+                </div>
+              </div>
+              <div class="mini-stats">
+                <strong>39.680</strong>
+                <span>+0.76%</span>
+              </div>
+            </article>
+            
+            <article class="mini-card">
+              <div class="mini-top">
+                <div class="icon-box small"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17 9 11l4 4 7-8"/><path d="M14 7h6v6"/></svg></div>
+                <div>
+                  <h4>紫金矿业</h4>
+                  <p>601899</p>
+                </div>
+              </div>
+              <div class="mini-stats">
+                <strong>33.780</strong>
+                <span>-1.54%</span>
+              </div>
+            </article>
+            
+            <article class="mini-card">
+              <div class="mini-top">
+                <div class="icon-box small"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17 9 11l4 4 7-8"/><path d="M14 7h6v6"/></svg></div>
+                <div>
+                  <h4>美的集团</h4>
+                  <p>000333</p>
+                </div>
+              </div>
+              <div class="mini-stats">
+                <strong>79.570</strong>
+                <span>-0.11%</span>
+              </div>
+            </article>
+            
+            <article class="mini-card">
+              <div class="mini-top">
+                <div class="icon-box small"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17 9 11l4 4 7-8"/><path d="M14 7h6v6"/></svg></div>
+                <div>
+                  <h4>贵州茅台</h4>
+                  <p>600519</p>
+                </div>
+              </div>
+              <div class="mini-stats">
+                <strong>1405.550</strong>
+                <span>-3.63%</span>
+              </div>
+            </article>
+            
+            <article class="mini-card">
+              <div class="mini-top">
+                <div class="icon-box small"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17 9 11l4 4 7-8"/><path d="M14 7h6v6"/></svg></div>
+                <div>
+                  <h4>宁德时代</h4>
+                  <p>300750</p>
+                </div>
+              </div>
+              <div class="mini-stats">
+                <strong>438.630</strong>
+                <span>-1.41%</span>
+              </div>
+            </article>
+            </div>
+      
+    <article class="pick-card">
+      <div class="pick-head">
+        <div>
+          <h3>中国神华</h3>
+          <p class="muted">601088 · 高股息资源龙头</p>
+        </div>
+        <span class="pill neutral">观察</span>
+      </div>
+      <div class="pick-stats">
+        <div><span>现价</span><strong>46.570</strong></div>
+        <div><span>涨跌</span><strong>-1.31%</strong></div>
+      </div>
+      <div class="pick-reason-block">
+        <p><strong>什么时候：</strong>可以加入观察池，先看它 1-2 周的走势再决定。</p>
+        <p><strong>为什么：</strong>高股息资源龙头</p>
+      </div>
+    </article>
+    
+    <article class="pick-card">
+      <div class="pick-head">
+        <div>
+          <h3>招商银行</h3>
+          <p class="muted">600036 · 优质金融龙头</p>
+        </div>
+        <span class="pill neutral">观察</span>
+      </div>
+      <div class="pick-stats">
+        <div><span>现价</span><strong>39.680</strong></div>
+        <div><span>涨跌</span><strong>+0.76%</strong></div>
+      </div>
+      <div class="pick-reason-block">
+        <p><strong>什么时候：</strong>可以加入观察池，先看它 1-2 周的走势再决定。</p>
+        <p><strong>为什么：</strong>优质金融龙头</p>
+      </div>
+    </article>
+    
+    <article class="pick-card">
+      <div class="pick-head">
+        <div>
+          <h3>紫金矿业</h3>
+          <p class="muted">601899 · 金属资源龙头</p>
+        </div>
+        <span class="pill neutral">观察</span>
+      </div>
+      <div class="pick-stats">
+        <div><span>现价</span><strong>33.780</strong></div>
+        <div><span>涨跌</span><strong>-1.54%</strong></div>
+      </div>
+      <div class="pick-reason-block">
+        <p><strong>什么时候：</strong>可以加入观察池，先看它 1-2 周的走势再决定。</p>
+        <p><strong>为什么：</strong>金属资源龙头</p>
+      </div>
+    </article>
+    
+    <article class="pick-card">
+      <div class="pick-head">
+        <div>
+          <h3>美的集团</h3>
+          <p class="muted">000333 · 家电与出海制造代表</p>
+        </div>
+        <span class="pill neutral">观察</span>
+      </div>
+      <div class="pick-stats">
+        <div><span>现价</span><strong>79.570</strong></div>
+        <div><span>涨跌</span><strong>-0.11%</strong></div>
+      </div>
+      <div class="pick-reason-block">
+        <p><strong>什么时候：</strong>可以加入观察池，先看它 1-2 周的走势再决定。</p>
+        <p><strong>为什么：</strong>家电与出海制造代表</p>
+      </div>
+    </article>
+    
+      
+    <article class="pick-card">
+      <div class="pick-head">
+        <div>
+          <h3>宁德时代</h3>
+          <p class="muted">300750 · 新能源链核心样本</p>
+        </div>
+        <span class="pill danger">别买</span>
+      </div>
+      <div class="pick-stats">
+        <div><span>现价</span><strong>438.630</strong></div>
+        <div><span>涨跌</span><strong>-1.41%</strong></div>
+      </div>
+      <div class="pick-reason-block">
+        <p><strong>什么时候：</strong>新能源波动极大，新手别碰；等熟悉后再考虑。</p>
+        <p><strong>为什么：</strong>宁德时代虽然龙头，但股价波动太大，不适合新手。</p>
+      </div>
+    </article>
+    
+    </section>
+
+
+    <section class="section">
+      <p class="eyebrow">News</p>
+      <h2>今天我参考了哪些信息</h2>
+      <section class="news-group"><h3>A股 ETF 基金</h3><div class="news-list"><article class="news-item"><span class="pill neutral">中性</span><p>一周缩水超700亿元！资金又从宽基大撤退，A股ETF的“回血局”为何 ...</p></article><article class="news-item"><span class="pill good">机会</span><p>摩根MSCI中国A股ETF联接年报解读：净利润增长85% 净资产缩水24% 份额 ...</p></article><article class="news-item"><span class="pill neutral">中性</span><p>多只油气主题ETF涨停，有基金年内收益超40%，还能上车吗？</p></article></div></section><section class="news-group"><h3>中国经济 政策 市场</h3><div class="news-list"><article class="news-item"><span class="pill neutral">中性</span><p>36氪研究院 | 2026年中国银发经济产业研究报告</p></article><article class="news-item"><span class="pill neutral">中性</span><p>环球时报社评：中国经济政策力度不够吗？</p></article><article class="news-item"><span class="pill neutral">中性</span><p>【早知】中国为何不推出大规模经济刺激？</p></article></div></section><section class="news-group"><h3>美股 通胀 利率</h3><div class="news-list"><article class="news-item"><span class="pill neutral">中性</span><p>美联储利率观测器</p></article><article class="news-item"><span class="pill neutral">中性</span><p>沃什，美联储主席提名听证会要来了！市场屏息等待这些答案</p></article><article class="news-item"><span class="pill danger">风险</span><p>通胀降温工作未完成 美联储利率料不变</p></article></div></section><section class="news-group"><h3>黄金 原油 风险</h3><div class="news-list"><article class="news-item"><span class="pill neutral">中性</span><p>原油大跌、黄金上涨，市场抢跑又被打断？</p></article><article class="news-item"><span class="pill neutral">中性</span><p>黄金跳水、原油飞天，全球大宗商品多空“大乱斗”</p></article><article class="news-item"><span class="pill neutral">中性</span><p>原创 帮主郑重：停火延期，原油、黄金、铜却一起涨？市场在交易什么</p></article></div></section>
+    </section>
+
+    <section class="section">
+      <p class="eyebrow">Risk</p>
+      <h2>最后的提醒</h2>
+      <p class="footer-note">这份页面已经尽量把术语压到最低，并直接给出"适合大多数新手"的动作建议；但它仍然不是你的专属投顾。若你有高息负债、短期内要用钱，今天最好的动作通常不是买高波动资产，而是先保留现金。</p>
+    </section>
+  </main>
+
+  <script>
+    (() => {
+      const refreshButton = document.getElementById('refreshDigestBtn');
+      const exportButton = document.getElementById('exportLongImageBtn');
+      const status = document.getElementById('toolStatus');
+      const root = document.querySelector('[data-export-root]');
+      const localDashboardUrl = "http://127.0.0.1:8767/public/index.html";
+      const localRefreshUrl = "http://127.0.0.1:8767/api/refresh";
+      const refreshEndpoint = window.location.protocol === 'file:' ? localRefreshUrl : '/api/refresh';
+
+      if (!refreshButton || !exportButton || !status || !root) {
+        return;
+      }
+
+      const setStatus = (text, isError = false) => {
+        status.textContent = text;
+        status.dataset.error = isError ? 'true' : 'false';
+      };
+
+      const setWorking = (working) => {
+        refreshButton.disabled = working;
+        exportButton.disabled = working;
+      };
+
+      const waitForPaint = (frameCount = 2) => new Promise((resolve) => {
+        const step = () => {
+          if (frameCount <= 0) {
+            resolve();
+            return;
+          }
+          frameCount -= 1;
+          requestAnimationFrame(step);
+        };
+        requestAnimationFrame(step);
+      });
+
+      const buildReloadUrl = () => {
+        const nextUrl = new URL(window.location.href);
+        nextUrl.searchParams.set('_ts', String(Date.now()));
+        return nextUrl.toString();
+      };
+
+      const resolveRefreshErrorMessage = (error) => {
+        const rawMessage = error instanceof Error ? error.message : '';
+        if (window.location.protocol === 'file:') {
+          return `当前是本地 HTML 文件模式。请先运行 run_daily_report.ps1，或改用 ${localDashboardUrl} 打开后再点刷新。`;
+        }
+        if (rawMessage.includes('Failed to fetch')) {
+          return '本地刷新服务没有连上。请重新运行 run_daily_report.ps1 后再试。';
+        }
+        return rawMessage || '刷新失败，请稍后重试。';
+      };
+
+      refreshButton.addEventListener('click', async () => {
+        if (refreshButton.disabled) {
+          return;
+        }
+
+        setWorking(true);
+        setStatus('正在抓取最新行情和新闻，请稍等几秒…');
+
+        try {
+          const response = await fetch(refreshEndpoint, {
+            method: 'POST',
+            cache: 'no-store',
+          });
+          const payload = await response.json().catch(() => ({}));
+
+          if (!response.ok || !payload.ok) {
+            throw new Error(payload.message || '刷新失败，请稍后重试。');
+          }
+
+          setStatus(`已刷新到 ${payload.generated_at}，页面正在重载…`);
+          window.setTimeout(() => {
+            window.location.replace(buildReloadUrl());
+          }, 600);
+        } catch (error) {
+          setStatus(resolveRefreshErrorMessage(error), true);
+          setWorking(false);
+        }
+      });
+
+
+      exportButton.addEventListener('click', async () => {
+        if (exportButton.disabled) {
+          return;
+        }
+
+        setWorking(true);
+        document.body.classList.add('is-exporting');
+        setStatus('正在生成长图，请稍等几秒…');
+
+        try {
+          if (typeof window.html2canvas !== 'function') {
+            throw new Error('长图组件加载失败，请检查网络后重试。');
+          }
+
+          await waitForPaint(2);
+
+          const canvas = await window.html2canvas(root, {
+            backgroundColor: '#050b16',
+            useCORS: true,
+            scale: Math.min(3, Math.max(2, window.devicePixelRatio || 2)),
+            scrollX: 0,
+            scrollY: 0,
+            windowWidth: root.scrollWidth,
+            windowHeight: root.scrollHeight,
+          });
+
+          const downloadLink = document.createElement('a');
+          downloadLink.download = 'finance-digest-2026-04-27.png';
+          downloadLink.href = canvas.toDataURL('image/png');
+          downloadLink.click();
+
+          setStatus('长图已生成。如果没自动保存，请检查浏览器下载权限。');
+        } catch (error) {
+          const message = error instanceof Error ? error.message : '导出失败，请稍后重试。';
+          setStatus(message, true);
+        } finally {
+          document.body.classList.remove('is-exporting');
+          setWorking(false);
+        }
+      });
+    })();
+  </script>
+
+</body>
+</html>
